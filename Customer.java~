@@ -1,0 +1,83 @@
+package shipmentprocessor;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Programmer: Vikrant Dabidin
+ * Program: Customer.java
+ * Date: 27 May 2020
+ * @version 1.0 * @author Vikrant Dabidin
+ */
+
+import java.util.Arrays;
+
+public class Customer {
+    
+    /** CustomerID array to store all customer IDs **/
+    private int CustomerID[] = {101,103,105,107,109,111};
+    
+    /** CustomerNames array to store all customer names **/
+    private String CustomerNames[] = {"Fred Budd", "Joe Strummer", "Wilma Flint", "John Matthew", "Derek Hale", "Michael Smith"};
+    
+    /** stores customer ID being used for shipment **/
+    private int customerID;
+    
+    /** stores the corresponding customer name being used for shipment **/
+    private String name;
+    
+    
+
+    /**
+     * uses binarySearch method of the Array class to search for customerID in the CustomerID array
+     * @param customerID The customerID to search for
+     * @throws Exception To throw exception for invalid customerID
+     */
+    
+    public void setcustomerID(int customerID) throws Exception{
+               
+        Arrays.sort(CustomerID); // Sort the CustomerID array
+        
+        this.customerID = customerID; // Use this customerID
+        
+        int compare = Arrays.binarySearch(CustomerID,this.customerID); // Search for this customerID in the CustomerID array 
+        
+        if(compare == -1){
+        
+            throw new Exception("Invalid customerID"); // If this customerID is not found in array, throw Exception
+        }
+        
+        else{
+                       
+            setName(CustomerNames[compare]); // If this customerID is found in array, find its corresponding name in the CustomerNames array
+        
+        }
+     
+    }
+    
+    /**
+     * name of the customer
+     * @param name the name to add
+     */
+    public void setName(String name){
+        
+        this.name = name;   
+    }
+    
+    
+    /**
+     * 
+     * @return the name of the customer
+     */
+    public String getName(){
+        
+        return this.name;   
+    }
+    
+    
+    
+
+}
